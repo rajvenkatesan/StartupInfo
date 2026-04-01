@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Env files
+.env
+!infra/.env.example
+
+# Claude Code
+.claude/
+
+# Editor
+.idea/
+.vscode/
+*.swp
