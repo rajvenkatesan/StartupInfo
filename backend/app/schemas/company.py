@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 class CompanyBase(BaseModel):
     company_name: str
+    company_url: str
     location: str | None = None
     description: str | None = None
     company_type: str | None = None
@@ -14,7 +15,16 @@ class CompanyBase(BaseModel):
     mission: str | None = None
     founders: list[str] | None = None
     website: str | None = None
+    related_urls: list[str] | None = None
     linkedin_url: str | None = None
+    # enrichment fields
+    founded_year: int | None = None
+    employee_count: str | None = None
+    headquarters: str | None = None
+    industry: str | None = None
+    total_funding_usd: int | None = None
+    latest_series: str | None = None
+    products: list[str] | None = None
     extra: dict[str, Any] | None = None
 
 
@@ -23,6 +33,7 @@ class CompanyCreate(CompanyBase):
 
 
 class CompanyUpdate(BaseModel):
+    company_url: str | None = None
     location: str | None = None
     description: str | None = None
     company_type: str | None = None
@@ -31,7 +42,16 @@ class CompanyUpdate(BaseModel):
     mission: str | None = None
     founders: list[str] | None = None
     website: str | None = None
+    related_urls: list[str] | None = None
     linkedin_url: str | None = None
+    # enrichment fields
+    founded_year: int | None = None
+    employee_count: str | None = None
+    headquarters: str | None = None
+    industry: str | None = None
+    total_funding_usd: int | None = None
+    latest_series: str | None = None
+    products: list[str] | None = None
     extra: dict[str, Any] | None = None
 
 

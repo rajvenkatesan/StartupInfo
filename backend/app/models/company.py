@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import ARRAY, DateTime, String, Text
+from sqlalchemy import ARRAY, BigInteger, DateTime, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -26,7 +26,17 @@ class Company(Base):
     mission: Mapped[str | None] = mapped_column(Text)
     founders: Mapped[list[str] | None] = mapped_column(ARRAY(Text))
     website: Mapped[str | None] = mapped_column(Text)
+    company_url: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
+    related_urls: Mapped[list[str] | None] = mapped_column(ARRAY(Text))
     linkedin_url: Mapped[str | None] = mapped_column(Text)
+    # enrichment fields populated by discovery
+    founded_year: Mapped[int | None] = mapped_column(Integer)
+    employee_count: Mapped[str | None] = mapped_column(String(50))
+    headquarters: Mapped[str | None] = mapped_column(Text)
+    industry: Mapped[str | None] = mapped_column(Text)
+    total_funding_usd: Mapped[int | None] = mapped_column(BigInteger)
+    latest_series: Mapped[str | None] = mapped_column(String(30))
+    products: Mapped[list[str] | None] = mapped_column(ARRAY(Text))
     extra: Mapped[dict | None] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=utcnow, nullable=False
